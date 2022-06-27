@@ -8,13 +8,13 @@
   </div>
 
   <div class="nav-bar__selection">
-    <form method="get" action="/all-wines">
+    <form method="get" action="/wines">
       <button type="submit" id="viewAllWines" class="items button">View all wines</button>
     </form>
-    <form method="GET" action="/red-wines">
+    <form method="GET" action="/wines/red">
       <button type="submit" id="reds" class="items button">Reds</button>
     </form>
-    <form method="GET" action="/white-wines">
+    <form method="GET" action="/wines/white">
       <button type="submit" id="whites" class="items button">Whites</button>
     </form>
     <form method="GET" action="/admin-listing">
@@ -34,7 +34,11 @@
     <!-- <form method="GET" action="/favorites/userid">
       <button type="submit" id="favorites_userid" class="items button"></button>
     </form> Suggested code---->
-    <img class="favorites-btn" src="/images/heart-icon.svg" alt=""/>
+    <form method="GET" action="/favourites" class="form">
+      <button type="submit" class="button">
+        <img class="favorites-btn" src="/images/heart-icon.svg" alt=""/>
+      </button>
+    </form>
     <img class="profile-btn" src="/images/user-profile.svg" alt=""/>
   </div>
 </nav>
