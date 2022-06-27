@@ -21,7 +21,9 @@ module.exports = (db) => {
   router.get("/admin-listing", function(req, res) {
     res.render('admin_listing');
   });
-
+  router.get('/favourites', function(req, res) {
+    res.render('favorites');
+  })
 
 
   // favorites page favorite button:

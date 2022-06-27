@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <script src="https://kit.fontawesome.com/f6eb3ac13e.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../styles/all-wines.css" type="text/css" />
-  <link rel="stylesheet" href="../styles/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/all-wines.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
   <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" type="text/css" />
   <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" type="text/css" />
@@ -15,17 +15,24 @@
 <body class="main">
   <header>
     <%- include('partials/_navbar') %>
-    <h1>All our excellent wines</h1>
+    <h1>All our excellent white wines</h1>
   </header>
+  <form class="price-selector" method="GET" action="/price/selector/white">
+    <label for="minprice" class="minlabel">Min price:</label>
+    <input class="min-price" type="text" name="minprice" placeholder="102">
+    <label for="maxprice" class="maxlabel">Max price:</label>
+    <input class="max-price" type="text" name="maxprice" placeholder="504">
+    <button type="submit" class="pricebutton">Search</button>
+  </form>
   <% allWhiteWines.forEach((wine) => { %>
   <div class="wine-listing">
     <img src= <%= wine.wine_image_url %> class="image" >
     <img src= <%= wine.winery_image_url %> class="logo">
-    <span class="price">Price: <%= wine.price %></span>
+    <span class="price">Price: $<%= wine.price %>.00</span>
     <span class="year">Year: <%= wine.year %></span>
     <span class="label">Label: <%= wine.wine_type %> </span>
     <span class="award"><%= wine.award %></span>
-    <span class="desc"><%= wine.name %></span>
+    <span class="desc"><%= wine.wine_name %></span>
     <i class="fa-solid fa-heart"></i>
     <form method="GET" action="/contact-page">
       <button type="submit" class="contact">Contact</button>

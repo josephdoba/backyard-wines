@@ -1,7 +1,7 @@
 // User clicked on Send button:
-$(document).ready(function() {
-  console.log("contact ready!");
-});
+//$(document).ready(function() {
+ // console.log("contact ready!");
+//});
 
 
 // $(document).ready(
