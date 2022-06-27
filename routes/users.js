@@ -67,7 +67,22 @@ module.exports = () => {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
     }
-    res.render('contact');
+    const templateVars = {
+      user: req.cookies.username,
+      userRole: req.cookies.userRole,};
+    res.render('contact', templateVars);
+  });
+
+  router.get("/admin-listing", function(req, res) {
+    if (!req.cookies.username) {
+      res.cookie('userRole', false);
+      res.cookie('username', 'Guest');
+    }
+    const templateVars = {
+      user: req.cookies.username,
+      userRole: req.cookies.userRole,};
+    res.render('admin_listing', templateVars);
+
   });
 
   router.get("/favourites", function(req, res) {
@@ -79,18 +94,10 @@ module.exports = () => {
       user: req.cookies.username,
       userRole: req.cookies.userRole,};
     res.render('favorites', templateVars);
-
-  router.get("/admin-listing", function(req, res) {
-    res.render('admin_listing');
-
   });
-  router.get('/favourites', function(req, res) {
-    res.render('favorites');
-  })
-
 
   // favorites page favorite button:
-  router.get("/favorites_status", function(req, res) {
+  router.get("/favourites_status", function(req, res) {
     if (!req.cookies.username) {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
@@ -109,7 +116,7 @@ module.exports = () => {
     const templateVars = {
       user: req.cookies.username,
       userRole: req.cookies.userRole,};
-    res.render('/createListing', templateVars);
+    res.render('createListing', templateVars);
   });
 
   return router;
