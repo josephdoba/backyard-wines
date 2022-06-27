@@ -24,7 +24,9 @@ module.exports = (db) => {
   router.get("/contact-page", function(req, res) {
     res.render('contact');
   });
-
+  router.get("/admin-listing", function(req, res) {
+    res.render('admin_listing');
+  });
 
 
 
