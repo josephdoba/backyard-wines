@@ -18,6 +18,7 @@ const getAllWhiteWines = async () => {
   return result.rows;
 };
 
+
 const getUsers = async (userID) => {
   const result = await db.query(`SELECT * FROM users
   WHERE id = $1`, [userID]);
@@ -32,11 +33,17 @@ const getUserByEmail = async (email) => {
   return result.rows[0];
 };
 
+const getCorrespondenceEmails = async() => {
+  const emails = await db.query(`SELECT `);
+  return emails.rows;
+};
 
 module.exports = {
   getAllWines,
   getAllRedWines,
   getAllWhiteWines,
   getUsers,
-  getUserByEmail
+  getUserByEmail,
+  getCorrespondenceEmails
+
 };
