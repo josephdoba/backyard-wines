@@ -17,8 +17,14 @@ const getAllWhiteWines = async () => {
   return result.rows;
 };
 
+const getCorrespondenceEmails = async() => {
+  const emails = await db.query(`SELECT `);
+  return emails.rows;
+};
+
 module.exports = {
   getAllWines,
   getAllRedWines,
-  getAllWhiteWines
+  getAllWhiteWines,
+  getCorrespondenceEmails
 };
