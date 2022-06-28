@@ -68,7 +68,8 @@ module.exports = () => {
     }
     const templateVars = {
       user: req.cookies.username,
-      userRole: req.cookies.userRole,};
+      userRole: req.cookies.userRole,
+    };
     res.render('contact', templateVars);
   });
 
