@@ -17,6 +17,20 @@ module.exports = () => {
     };
     res.render('all-wines', templateVars);
   });
+  router.get("/wines/featured", async(req, res) => {
+    if (!req.cookies.username) {
+      res.cookie('userRole', false);
+      res.cookie('username', 'Guest');
+    }
+    const result = await searchSelector(null,null,null,'NWAC21 Platinum');
+    const templateVars = {
+      user: req.cookies.username,
+      userRole: req.cookies.userRole,
+      featuredWines: result
+    };
+    res.render('featured-wines', templateVars);
+  });
+
   router.get("/wines/red", async(req, res) => {
     if (!req.cookies.username) {
       res.cookie('userRole', false);
