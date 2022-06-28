@@ -67,7 +67,11 @@ module.exports = () => {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
     }
-    res.render('contact');
+    const templateVars = {
+      user: req.cookies.username,
+      userRole: req.cookies.userRole
+    };
+    res.render('contact', templateVars);
   });
 
   router.get("/favourites", function(req, res) {
@@ -79,6 +83,7 @@ module.exports = () => {
       user: req.cookies.username,
       userRole: req.cookies.userRole,};
     res.render('favorites', templateVars);
+  });
 
   router.get("/admin-listing", function(req, res) {
     res.render('admin_listing');
@@ -86,7 +91,7 @@ module.exports = () => {
   });
   router.get('/favourites', function(req, res) {
     res.render('favorites');
-  })
+  });
 
 
   // favorites page favorite button:
