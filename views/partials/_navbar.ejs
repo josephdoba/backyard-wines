@@ -17,9 +17,6 @@
     <form method="GET" action="/wines/white">
       <button type="submit" id="whites" class="items button">Whites</button>
     </form>
-    <form method="GET" action="/admin-listing">
-      <button type="submit" id="listing" class="items button">Listing</button>
-    </form>
   </div>
 
   <div class="nav-bar__user">
@@ -47,8 +44,8 @@
         </button>
       </form>
     <% } else if (user !== 'Guest' && userRole === 'true') { %>
-      <form method="GET" action="/create-listing" class="form">
-        <button type="submit" id="create-listing" class="create-listing">Create Listing</button>
+      <form method="GET" action="/admin-listing">
+        <button type="submit" id="listing" class="items button">Listing</button>
       </form>
     <% } else %>
 

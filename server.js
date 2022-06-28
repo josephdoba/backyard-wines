@@ -49,9 +49,9 @@ const priceRoutes = require('./routes/priceSelector');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("", usersRoutes(db));
-app.use("", wineRoutes(db));
-app.use("", priceRoutes(db));
+app.use("", usersRoutes());
+app.use("", wineRoutes());
+app.use("", priceRoutes());
 //app.use("", contactRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
