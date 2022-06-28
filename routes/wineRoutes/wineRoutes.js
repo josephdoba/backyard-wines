@@ -1,19 +1,15 @@
 const express = require('express');
 const router  = express.Router();
 
-const { getAllWines } = require('../../db/database');
-const { getAllRedWines } = require('../../db/database');
-const { getAllWhiteWines } = require('../../db/database');
+const { searchSelector } = require('../../db/database');
 
-module.exports = (database) => {
+module.exports = () => {
   router.get("/wines", async(req, res) => {
-    console.log('user', req.cookies.username);
-    console.log('userRole', req.cookies.userRole);
     if (!req.cookies.username) {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
     }
-    const result = await getAllWines();
+    const result = await searchSelector();
     const templateVars = {
       user: req.cookies.username,
       userRole: req.cookies.userRole,
@@ -26,7 +22,7 @@ module.exports = (database) => {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
     }
-    const result = await getAllRedWines();
+    const result = await searchSelector(null, null, 'Red');
     const templateVars = {
       user: req.cookies.username,
       userRole: req.cookies.userRole,
@@ -39,7 +35,7 @@ module.exports = (database) => {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
     }
-    const result = await getAllWhiteWines();
+    const result = await searchSelector(null, null, 'White');
     const templateVars = {
       user: req.cookies.username,
       userRole: req.cookies.userRole,
