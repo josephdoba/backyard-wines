@@ -1,7 +1,12 @@
-// User clicked on Send button:
+// nodemailer setup
+console.log("the contact.js page loaded correctly");
+
+// const { mailSender } = require('./mail-sender.js');
+
 $(document).ready(function() {
 
-  $("form").on("submit", function(event) {
+  $(".contact-seller_form-style").on("submit", function(event) {
+  // $("form").on("submit", function(event) {
     event.preventDefault();
 
     // sanitize entry point:
@@ -11,43 +16,22 @@ $(document).ready(function() {
     // const $errorIcon = `<i class="fa-solid fa-circle-exclamation"></i>`; Stretch Feature
     // const $lengthError = `Email too long. Must be within 300 chars.`; Stretch Feature
 
-
     // check if empty:
     if (!contactText) {
       alert("Cannot send a blank email");
-      // $(".new-tweet-error").slideDown(200, function() {
-      //   $(".new-tweet-error").toggleClass("new-tweet-error-border");
-      //   $(".new-tweet-error").text($emptyError);
-      //   $(".new-tweet-error").append($errorIcon);
-      //   $(".new-tweet-error").prepend($errorIcon);
     }
 
     // Send email:
     console.log(contactText);
+    mailSender();
+
+
 
   });
-
-
 });
 
 
 /*
-  // sanitize entry point:
-  let contactText = escape($(".new-tweet-form-textarea").val());
-  const safeHTML = `<p>${contactText}</p>`;
-  const data = $(this).serialize();
-  const $emptyError = `You can't send an empty tweet!`;
-  const $errorIcon = `<i class="fa-solid fa-circle-exclamation"></i>`;
-  const $lengthError = `Tweet too long. Must be within 140 chars.`;
-
-  // check if empty:
-  if (!contactText) {
-    $(".new-tweet-error").slideDown(200, function() {
-      $(".new-tweet-error").toggleClass("new-tweet-error-border");
-      $(".new-tweet-error").text($emptyError);
-      $(".new-tweet-error").append($errorIcon);
-      $(".new-tweet-error").prepend($errorIcon);
-    });
 
   // If cleared, post to server:
   } else {
