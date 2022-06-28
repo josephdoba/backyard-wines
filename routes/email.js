@@ -1,18 +1,19 @@
 const express = require("express");
 const router = express.Router();
+const fs = require('fs');
 const { mailSender } = require("./mailSender");
 
 
 module.exports = () => {
-  // const fetchEmailFrom (sql query from user)
-  // const fetchEmailTo (sql query to business email)
+  let fetchEmailFrom = `SELECT email from users WHERE id = 6;`;
+  let fetchEmailTo = `SELECT email from users WHERE id = 6;`;
 
-
-  router.get("/send", async(req, res) => {
+  router.get("/send/:name", async(req, res) => {
     if (!req.cookies.username) {
       res.cookie("userRole", false);
       res.cookie("username", "Guest");
     }
+
     console.log(req.query.text);
 
     mailSender(fetchEmailFrom, fetchEmailTo, req.query.text);
