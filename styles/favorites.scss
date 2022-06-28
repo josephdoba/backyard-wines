@@ -3,15 +3,17 @@
 }
 
 .favorites-title {
-  color: #580C1F;
   display: flex;
+  justify-content: center;
   align-items: center;
+  color: #580C1F;
   font-size: 50px;
 }
 
 .wine-listing {
   position: relative;
   display: flex;
+  justify-self: center;
   background-color: white;
   height: 225px;
   left: 12.5%;
@@ -19,18 +21,17 @@
   margin-bottom: 25px;
   border-radius: 25px;
   border: #580C1F solid 2px;
-  justify-self: center;
 }
 
 .price {
   position: absolute;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #A7333F;
   height: 45px;
   width: 181px;
-  background-color: #A7333F;
-  color: white;
-  justify-content: center;
-  align-items: center;
   border-radius: 25px;
   left: 15%;
   bottom: 5%;
@@ -79,10 +80,10 @@
 i {
   position: absolute;
   display: flex;
+  color:#A7333F;
   right: 3%;
   top: 5px;
   font-size: 35px;
-  color:#A7333F;
 }
 
 .actual-desc {
@@ -96,24 +97,24 @@ i {
 
 .contact {
   position: absolute;
-  right: 3%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 45px;
   width: 181px;
-  background-color: #A7333F;
   color: white;
-  justify-content: center;
-  align-items: center;
+  background-color: #A7333F;
+  border: none;
   border-radius: 25px;
   bottom: 10px;
-  border: none;
+  right: 3%;
 }
 
 .image {
-  height: 150px;
   position: absolute;
-  left: 7%;
+  height: 150px;
   top: 35px;
+  left: 7%;
 }
 
 .logo {

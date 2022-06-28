@@ -4,6 +4,7 @@ const dbParams = require("../lib/db");
 const db = new Pool(dbParams);
 db.connect();
 
+
 const searchSelector = async (min, max, type) => {
   console.log('dbmin', min);
   console.log('dbmax', max);
@@ -24,7 +25,6 @@ const searchSelector = async (min, max, type) => {
   }
 
   const result = await db.query(queryString, queryParams);
-
 
   return result.rows;
 
