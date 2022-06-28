@@ -1,5 +1,11 @@
 // User clicked on Send button:
+<<<<<<< HEAD:public/scripts/contact.js
 $(document).ready(function() {
+=======
+//$(document).ready(function() {
+ // console.log("contact ready!");
+//});
+>>>>>>> 1dc2056da248890bf96efde60e0b089b1cde9acb:routes/contact.js
 
   $("form").on("submit", function(event) {
     event.preventDefault();

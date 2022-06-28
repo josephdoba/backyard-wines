@@ -17,12 +17,21 @@
     <form method="GET" action="/wines/white">
       <button type="submit" id="whites" class="items button">Whites</button>
     </form>
+    <form method="GET" action="/admin-listing">
+      <button type="submit" id="listing" class="items button">Listing</button>
+    </form>
   </div>
 
   <div class="nav-bar__user">
+    <% if (user !== 'Guest' ) { %>
+      <form method="POST" action="/logout">
+        <button type="submit" class="logout button" > Logout</button>
+      </form>
+      <% } else { %>
     <form method="GET" action="/login">
       <button type="submit" class="login button" > Login</button>
     </form>
+    <% }  %>
       <!-- /
     <a href="#" class="join">Join</a> -->
   </div>
@@ -31,11 +40,20 @@
     <!-- <form method="GET" action="/favorites/userid">
       <button type="submit" id="favorites_userid" class="items button"></button>
     </form> Suggested code---->
-    <form method="GET" action="/favourites" class="form">
-      <button type="submit" class="button">
-        <img class="favorites-btn" src="/images/heart-icon.svg" alt=""/>
-      </button>
-    </form>
+    <% if (user !== 'Guest' && userRole === 'false') { %>
+      <form method="GET" action="/favourites" class="form">
+        <button type="submit" class="button">
+          <img class="favorites-btn" src="/images/heart-icon.svg" alt=""/>
+        </button>
+      </form>
+    <% } else if (user !== 'Guest' && userRole === 'true') { %>
+      <form method="GET" action="/create-listing" class="form">
+        <button type="submit" id="create-listing" class="create-listing">Create Listing</button>
+      </form>
+    <% } else %>
+
+    <span class="user-name"><%= user %></span>
     <img class="profile-btn" src="/images/user-profile.svg" alt=""/>
+
   </div>
 </nav>

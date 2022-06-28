@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/styles/listing.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/all-wines.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+  <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" type="text/css" />
+  <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" type="text/css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>White wines</title>
+</head>
+<body class="main">
+<header>
+  <%- include('partials/_navbar') %>
+</header>
+<body>
+    <!-- user_id, price, year, wine_name, winery, award, wine_type, description, sold_out, image_url -->
+    <form action="listing" method="post" id="new-wine-form" class="new-wine-form">
+    <div class="wrapper">
+        <div class="form">
+           <div class="title">
+                Create Listing
+           </div>
+           <div class="inputfield">
+              <label>Wine Name</label>
+              <input type="text" class="input">
+           </div>
+
+           <div class="inputfield">
+            <label>Year</label>
+            <input type="text" class="input">
+           </div>
+
+           <div class="inputfield">
+              <label>Winery</label>
+              <input type="text" class="input">
+           </div>
+
+           <div class="inputfield">
+              <label>Award</label>
+              <input type="text" class="input">
+           </div>
+
+           <div class="inputfield">
+              <label>Wine Type</label>
+              <input type="text" class="input">
+           </div>
+
+           <div class="inputfield">
+             <label>Price</label>
+             <input type="text" class="input">
+           </div>
+
+           <div class="inputfield">
+              <label>description</label>
+              <textarea class="textarea"></textarea>
+           </div>
+
+           <div class="inputfield">
+              <label>image_url</label>
+              <input type="text" class="input">
+           </div>
+
+           <div class="inputfield">
+            <input type="submit" value="Create" class="btn">
+           </div>
+        </div>
+    </div>
+    </form>
+    </body>
+<footer>
+  <%- include('partials/_footer') %>
+</footer>
+</body>
+</html>

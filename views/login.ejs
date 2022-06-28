@@ -27,22 +27,23 @@
     <div class = "form-container">
         <div class="slide-controls">
             <input type="radio" name="slider" id="login" checked>
-            <input type="radio" name="slider" id="signup">            
+            <input type="radio" name="slider" id="signup">
             <label for="login" class="slide login">Login</label>
-            <label for="signup" class="slide signup">Signup</label>       
-            <div class="slide-tab"></div>    
+            <label for="signup" class="slide signup">Signup</label>
+            <div class="slide-tab"></div>
         </div>
         <div class="form-inner">
-            <form action="#" class="login">
+            <form action="/login" method ="POST" class="login">
+
                 <div class="field">
-                    <input type="text" placeholder="Email Address" required>
+                    <input name="email" type="email" placeholder="Email Address" required>
                     </div>
                 <div class="field">
-                    <input type="password" placeholder="Password" required>
+                    <input name="password" type="password" placeholder="Password" required>
                     </div>
                 <div class="forgot"><a href="#">Forgot password?</a></div>
                 <div class="field">
-                    <input type="submit" value="Login">
+                    <button type="submit" value="Login">Login</button>
                 </div>
             </form>
             <form action="#" class="signup">
