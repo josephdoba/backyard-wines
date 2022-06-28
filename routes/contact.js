@@ -8,11 +8,11 @@ $(document).ready(function() {
 
 
 
-//   $("form").on("submit", function(event) {
-//     event.preventDefault();
-//     console.log("Ayy the contact button is connected!");
+// $("form").on("submit", function(event) {
+//   event.preventDefault();
+//   console.log("Ayy the contact button is connected!");
 
-//   })
+// })
 // );
 
 
