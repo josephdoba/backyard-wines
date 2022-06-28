@@ -68,7 +68,8 @@ module.exports = () => {
     }
     const templateVars = {
       user: req.cookies.username,
-      userRole: req.cookies.userRole,};
+      userRole: req.cookies.userRole
+    };
     res.render('contact', templateVars);
   });
 
@@ -81,8 +82,8 @@ module.exports = () => {
       user: req.cookies.username,
       userRole: req.cookies.userRole,};
     res.render('admin_listing', templateVars);
-
   });
+
 
   router.get("/favourites", function(req, res) {
     if (!req.cookies.username) {

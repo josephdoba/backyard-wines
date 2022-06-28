@@ -75,8 +75,6 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
-
-
 // To check if user is login
 // app.get("/", (req, res) => {
 //   console.log('REQ.QUERY:', req.query);
