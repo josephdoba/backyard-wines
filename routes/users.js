@@ -9,7 +9,6 @@ const express = require('express');
 const { append } = require('express/lib/response');
 const router  = express.Router();
 
-
 // const { getAllWines } = require('../db/database');
 const database = require('../db/database');
 

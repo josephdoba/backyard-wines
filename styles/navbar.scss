@@ -1,14 +1,14 @@
 .nav-bar {
   display: flex;
   flex-direction: row;
-  height: 8rem;
+  height: 6rem;
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
   font-family: sans-serif;
   flex-grow: 0;
   background-color: white;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   position: static;
   top: 0;
   // @media only screen and (max-width: 805px) {
@@ -16,7 +16,7 @@
   // }
   img {
     height: 100%;
-    width: 22vw;
+    // width: 22vw;
   }
 
   &__selection {
@@ -32,7 +32,7 @@
   .items {
     &:hover {
       border-bottom: solid #74121d;
-      cursor:pointer;
+      cursor: pointer;
     }
   }
 
@@ -47,8 +47,8 @@
     justify-content: center;
     .login {
       text-decoration: none;
-      font-size:1.5rem;
-      color:black;
+      font-size: 1.5rem;
+      color: black;
       &:hover {
         border-bottom: solid #74121d;
       }
@@ -57,16 +57,37 @@
 
   &__buttons {
     height: 100%;
-    width: 21vw;
+    width: 15vw;
     font-size: 0.5rem;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
-    img {
-      height: 2rem;
+    #listing {
+      font-size: 1.5rem;
+      }
+      img {
+        height: 2rem;
+      }
+    }
+
+  &__namebtn {
+    height:100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      img {
+        height: 2rem;
+      }
+
+      .user-name {
+        font-size: 1.2rem;
+        // white-space: nowrap;
+        padding-right: 10px;
+        text-align: right
+      }
     }
   }
   .form {
-    width: 300px;
+    // width: 300px;
   }
-}
+
