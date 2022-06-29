@@ -49,7 +49,7 @@ module.exports = () => {
             // req.cookies.userRole = user.sellers;
             res.cookie('username', user.name);
             res.cookie('userRole', user.sellers);
-            res.redirect('/wines');
+            res.redirect('/wines/featured');
           }
         }
       });

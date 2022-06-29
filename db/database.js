@@ -5,9 +5,10 @@ const db = new Pool(dbParams);
 db.connect();
 
 
-const searchSelector = async (min, max, type) => {
+const searchSelector = async (min, max, type, award) => {
   console.log('dbmin', min);
   console.log('dbmax', max);
+  console.log('award', award);
   const queryParams = [];
   let queryString = `SELECT * FROM wine_listings WHERE TRUE`;
 
@@ -22,6 +23,10 @@ const searchSelector = async (min, max, type) => {
   if (type) {
     queryParams.push(type);
     queryString += ` AND wine_type = $${queryParams.length}`;
+  }
+  if (award) {
+    queryParams.push(award);
+    queryString += ` AND award = $${queryParams.length}`;
   }
 
   const result = await db.query(queryString, queryParams);
