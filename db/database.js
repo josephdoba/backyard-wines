@@ -85,16 +85,16 @@ const getUserByEmail = async (email) => {
   return result.rows[0];
 };
 
-const getUserEmailByID = async(id) => {
+const getUserEmailByID = async() => {
   const result = await db.query(`SELECT email from users
-  WHERE id = $1;`, [id]);
-  return result.rows[0];
+  WHERE id = 6;`);
+  return result.rows;
 };
 
-const getSellerEmailByID = async(id) => {
+const getSellerEmailByID = async() => {
   const result = await db.query(`SELECT email from users
-  WHERE id = $1;`, [id]);
-  return result.rows[0];
+  WHERE id = 5;`);
+  return result.rows;
 };
 
 

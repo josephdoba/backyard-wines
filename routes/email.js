@@ -1,25 +1,43 @@
 const express = require("express");
 const router = express.Router();
-const fs = require('fs');
 const { mailSender } = require("./mailSender");
 
 
 module.exports = () => {
-  let fetchEmailFrom = `SELECT email from users WHERE id = 6;`;
-  let fetchEmailTo = `SELECT email from users WHERE id = 6;`;
-
-  router.get("/send/:name", async(req, res) => {
+  // When send button is clicked
+  router.get("/send", async(req, res) => {
     if (!req.cookies.username) {
       res.cookie("userRole", false);
       res.cookie("username", "Guest");
     }
+    const templateVars = {
+      user: req.cookies.username,
+      userRole: req.cookies.userRole,
+      message: req.query.text
+    };
 
-    console.log(req.query.text);
-
-    mailSender(fetchEmailFrom, fetchEmailTo, req.query.text);
-
+    mailSender(req.query.text, templateVars);
+    res.render("contact-sent", templateVars);
+    // res.redirect("/contact-sent");
   });
 
+  // // redirect to "sent" page
+  // router.get("/send/sent", async(req, res) => {
+  //   if (!req.cookies.username) {
+  //     res.cookie("userRole", false);
+  //     res.cookie("username", "Guest");
+  //   }
+  //   const templateVars = {
+  //     user: req.cookies.username,
+  //     userRole: req.cookies.userRole,
+  //     message: req.query.text
+  //   };
 
+  //   res.render("contact-sent", templateVars);
+  //   // res.redirect("/contact-sent");
+
+  // });
   return router;
 };
+
+
