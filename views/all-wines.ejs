@@ -33,7 +33,10 @@
   <span class="label">Label: <%= wine.wine_type %> </span>
   <span class="award"><%= wine.award %></span>
   <span class="desc"><%= wine.wine_name %></span>
-  <i class="fa-solid fa-heart"></i>
+  <form method="GET" action="/api/favorite-item">
+    <button type="submit" class="add-to-favorites-btn"><i class="fa-solid fa-heart"></i></button>
+  </form>
+
   <form method="GET" action="/contact-page">
     <button type="submit" class="contact">Contact</button>
   </form>
