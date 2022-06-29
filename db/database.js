@@ -85,15 +85,24 @@ const getUserByEmail = async (email) => {
   return result.rows[0];
 };
 
-const getCorrespondenceEmails = async() => {
-  const emails = await db.query(`SELECT `);
-  return emails.rows;
+const getUserEmailByID = async() => {
+  const result = await db.query(`SELECT email from users
+  WHERE id = 6;`);
+  return result.rows;
 };
+
+const getSellerEmailByID = async() => {
+  const result = await db.query(`SELECT email from users
+  WHERE id = 5;`);
+  return result.rows;
+};
+
 
 module.exports = {
   searchSelector,
   getUsers,
   getUserByEmail,
-  getCorrespondenceEmails,
+  getUserEmailByID,
+  getSellerEmailByID
 
 };
