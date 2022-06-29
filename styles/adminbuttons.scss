@@ -12,3 +12,32 @@
   bottom: 5%;
   border: none;
 }
+.alreadysoldout {
+  position: absolute;
+  display: flex;
+  height: 45px;
+  width: 181px;
+  background-color: #580C1F;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  right: 2%;
+  bottom: 5%;
+  border: none;
+}
+
+.delete {
+  position: absolute;
+  display: flex;
+  height: 45px;
+  width: 181px;
+  background-color: blue;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  right: 2%;
+  bottom: 30%;
+  border: none;
+}

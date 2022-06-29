@@ -146,16 +146,26 @@ module.exports = () => {
       id: req.cookies.userID,
       wineryListings: result
       };
-     //console.log(result);
     res.render('admin_page', templateVars);
   });
 
   router.post('/soldout', async (req, res) => {
-    //console.log(req.body);
     if (!req.cookies.username) {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
-    }
+    };
+    const result = await database.setToSoldout(req.body.id);
+    res.redirect('admin/dashboard');
+  });
+
+  router.post('/removelisting', async (req, res) => {
+    if (!req.cookies.username) {
+      res.cookie('userRole', false);
+      res.cookie('username', 'Guest');
+    };
+    console.log(req.body);
+    const result = await database.removeListing(req.body.id);
+    res.redirect('admin/dashboard');
   })
 
   return router;

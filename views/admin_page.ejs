@@ -30,13 +30,20 @@
       <span class="label">Label: <%= wine.wine_type %> </span>
       <span class="award"><%= wine.award %></span>
       <span class="desc"><%= wine.wine_name %></span>
-      <button class="soldout">Mark as soldout</button>
+      <% if (wine.sold_out) { %>
+      <button class="alreadysoldout">already soldout</button>
+      <% } else { %>
+        <button class="soldout">Mark as soldout</button>
+        <% } %>
+      </form>
+        <form method="POST" action="/removelisting" class="delete-form" data-id="<%= wine.id %>">
+          <button class="delete">Delete listing</button>
+        </form>
       <i class="fa-solid fa-heart"></i>
       <article class="actual-desc">
         <%= wine.description %>
       </article>
     </div>
-  </form>
 <% }) %>
 <footer>
   <%- include('partials/_footer') %>
