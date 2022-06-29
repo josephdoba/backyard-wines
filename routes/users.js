@@ -35,7 +35,7 @@ module.exports = () => {
 
   router.post('/login', (req, res) => {
     const form = req.body;
-    // console.log(form);
+    console.log(form);
     database.getUserByEmail(form.email)
       .then((user) => {
         console.log(user);
@@ -49,7 +49,8 @@ module.exports = () => {
             // req.cookies.userRole = user.sellers;
             res.cookie('username', user.name);
             res.cookie('userRole', user.sellers);
-            res.redirect('/wines/featured');
+            res.cookie('userID', user.id)
+            res.redirect('/wines');
           }
         }
       });
@@ -132,6 +133,40 @@ module.exports = () => {
       userRole: req.cookies.userRole,};
     res.render('createListing', templateVars);
   });
+
+  router.get("/admin/dashboard", async (req, res) => {
+    if (!req.cookies.username) {
+      res.cookie('userRole', false);
+      res.cookie('username', 'Guest');
+    }
+    const result = await database.getWineriesListings(req.cookies.userID);
+    const templateVars = {
+      user: req.cookies.username,
+      userRole: req.cookies.userRole,
+      id: req.cookies.userID,
+      wineryListings: result
+      };
+    res.render('admin_page', templateVars);
+  });
+
+  router.post('/soldout', async (req, res) => {
+    if (!req.cookies.username) {
+      res.cookie('userRole', false);
+      res.cookie('username', 'Guest');
+    };
+    const result = await database.setToSoldout(req.body.id);
+    res.redirect('admin/dashboard');
+  });
+
+  router.post('/removelisting', async (req, res) => {
+    if (!req.cookies.username) {
+      res.cookie('userRole', false);
+      res.cookie('username', 'Guest');
+    };
+    console.log(req.body);
+    const result = await database.removeListing(req.body.id);
+    res.redirect('admin/dashboard');
+  })
 
   return router;
 };

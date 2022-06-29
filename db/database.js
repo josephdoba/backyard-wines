@@ -10,7 +10,7 @@ const searchSelector = async (min, max, type, award) => {
   console.log('dbmax', max);
   console.log('award', award);
   const queryParams = [];
-  let queryString = `SELECT * FROM wine_listings WHERE TRUE`;
+  let queryString = `SELECT * FROM wine_listings WHERE sold_out = false`;
 
   if (min) {
     queryParams.push(min);
@@ -91,10 +91,23 @@ const getUserEmailByID = async() => {
   return result.rows;
 };
 
+const getWineriesListings = async(id) => {
+  const result = await db.query(`SELECT wine_listings.* FROM wine_listings JOIN users ON users.id = wine_listings.user_id WHERE users.id=$1;`, [id]);
+  return result.rows;
+};
+
 const getSellerEmailByID = async() => {
   const result = await db.query(`SELECT email from users
   WHERE id = 5;`);
   return result.rows;
+};
+
+const setToSoldout = async(id) => {
+  const result = await db.query(`UPDATE wine_listings SET sold_out = true WHERE id=$1`, [id])
+};
+
+const removeListing = async(id) => {
+  const result = await db.query(`DELETE FROM wine_listings WHERE id=$1`, [id]);
 };
 
 
@@ -102,7 +115,10 @@ module.exports = {
   searchSelector,
   getUsers,
   getUserByEmail,
+  getWineriesListings,
   getUserEmailByID,
-  getSellerEmailByID
+  getSellerEmailByID,
+  setToSoldout,
+  removeListing
 
 };
