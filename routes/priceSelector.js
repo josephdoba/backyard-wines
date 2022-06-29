@@ -3,7 +3,7 @@ const router = express.Router();
 const { searchSelector } = require("../db/database");
 
 module.exports = () => {
-  router.get("/price/selector", async (req, res) => {
+  router.get("/price/selector", async(req, res) => {
     if (!req.cookies.username) {
       res.cookie("userRole", false);
       res.cookie("username", "Guest");

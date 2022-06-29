@@ -63,10 +63,24 @@ module.exports = () => {
   });
 
   router.get("/contact-page", function(req, res) {
+    const form = req.body;
     if (!req.cookies.username) {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
     }
+
+    if (req.cookies.username === "Guest") {
+      res.redirect('/login');
+    }
+
+    /*
+    req.cookie.username to grab the name of the user, and sequentially the emails can be grabbed with:
+        getUserEmailByID,
+        getSellerEmailByID
+
+
+    */
+
     const templateVars = {
       user: req.cookies.username,
       userRole: req.cookies.userRole

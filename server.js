@@ -7,8 +7,9 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
 
 // Set Cookie Parser
 app.use(cookieParser());
@@ -44,7 +45,7 @@ const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
 const wineRoutes = require('./routes/wineRoutes/wineRoutes');
 const priceRoutes = require('./routes/priceSelector');
-//const contactRoutes = require('./routes/contact.js');
+const contactRoutes = require('./routes/email.js');
 
 
 // Mount all resource routes
@@ -52,7 +53,7 @@ const priceRoutes = require('./routes/priceSelector');
 app.use("", usersRoutes());
 app.use("", wineRoutes());
 app.use("", priceRoutes());
-//app.use("", contactRoutes(db));
+app.use("", contactRoutes());
 // Note: mount other resources here, using the same pattern above
 
 // Home page

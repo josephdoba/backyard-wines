@@ -85,16 +85,22 @@ const getUserByEmail = async (email) => {
   return result.rows[0];
 };
 
-const getCorrespondenceEmails = async() => {
-  const emails = await db.query(`SELECT `);
-  return emails.rows;
+const getUserEmailByID = async() => {
+  const result = await db.query(`SELECT email from users
+  WHERE id = 6;`);
+  return result.rows;
 };
 
 const getWineriesListings = async(id) => {
   const result = await db.query(`SELECT wine_listings.* FROM wine_listings JOIN users ON users.id = wine_listings.user_id WHERE users.id=$1;`, [id]);
   return result.rows;
-}
+};
 
+const getSellerEmailByID = async() => {
+  const result = await db.query(`SELECT email from users
+  WHERE id = 5;`);
+  return result.rows;
+};
 
 
 module.exports = {
@@ -102,5 +108,8 @@ module.exports = {
   getUsers,
   getUserByEmail,
   getCorrespondenceEmails,
-  getWineriesListings
+  getWineriesListings,
+  getUserEmailByID,
+  getSellerEmailByID
+
 };
