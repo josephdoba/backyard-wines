@@ -1,14 +1,14 @@
 .nav-bar {
   display: flex;
   flex-direction: row;
-  height: 8rem;
+  height: 6rem;
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
   font-family: sans-serif;
   flex-grow: 0;
   background-color: white;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   position: static;
   top: 0;
   // @media only screen and (max-width: 805px) {
@@ -16,7 +16,7 @@
   // }
   img {
     height: 100%;
-    width: 22vw;
+    // width: 22vw;
   }
 
   &__selection {
@@ -65,8 +65,15 @@
     img {
       height: 2rem;
     }
+    #listing {
+    font-size: 1.5rem
+    }
+    .user-name {
+    font-size: 1.3rem;
+    white-space: nowrap
+    }
   }
   .form {
-    width: 300px;
+    // width: 300px;
   }
 }

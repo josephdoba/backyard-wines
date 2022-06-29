@@ -16,12 +16,12 @@
 <header>
   <%- include('partials/_navbar') %>
 </header>
-
+<main class="main-container">
 <div class = "wrapper">
 
     <div class = "title-text">
         <div class = "title login">Login Form</div>
-        <div class = "title signup">Signup From</div>
+        <div class = "title signup">Signup Form</div>
     </div>
 
     <div class = "form-container">
@@ -43,7 +43,7 @@
                     </div>
                 <div class="forgot"><a href="#">Forgot password?</a></div>
                 <div class="field">
-                    <button type="submit" value="Login">Login</button>
+                    <button type="submit" class = "login-btn" value="Login">Login</button>
                 </div>
             </form>
             <form action="#" class="signup">
@@ -57,8 +57,8 @@
                     <input type="password" placeholder="Confirm Password" required>
                     </div>
                 <div class="age">
-                    <input type="checkbox" required>
-                    <span class = "agetext">I am definitely a grown up (18 years or older)</span>
+                    <input type="checkbox" class = "checkbox"required>
+                    <span class = "agetext">I am definitely a grown up <br> (18 years or older)</span>
                 </div>
                 <div class="field">
                     <input type="submit" value="Signup">
@@ -69,6 +69,7 @@
         </div>
     </div>
 </div>
+</main>
 <script>
     const loginForm = document.querySelector("form.login");
     const signupForm = document.querySelector("form.signup");

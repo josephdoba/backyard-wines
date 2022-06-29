@@ -1,14 +1,23 @@
-
+.main-container {
+  background-image: url(/images/background.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100vw;
+  min-height: 75vh;
+  display: flex;
+  opacity:90%
+}
 .wrapper{
     max-width: 390px;
-    background: #fff;
+    // background: #fff;
     padding: 30px;
-    border-radius: 5px;
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
+    border: 5px solid #74121d;
+    border-radius: 20px;
 }
 
 .wrapper .title-text{
@@ -21,6 +30,7 @@
     font-size: 35px;
     font-weight: 600;
     text-align: center;
+    color: #74121D
 }
 
 .wrapper .form-container{
@@ -52,7 +62,7 @@
     color: #fff;
 }
 .slide-controls .signup{
-    color:#000;
+    color:white;
 
 }
 .age {
@@ -82,7 +92,7 @@ input[type="radio"]{
 }
 
 #signup:checked ~ .login{
-    color: #000;
+    color: white;
 }
 
 .form-container .form-inner{
@@ -122,7 +132,7 @@ input[type="radio"]{
 }
 
 .form-inner form .forgot a{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 .form-inner form .forgot a:hover{
@@ -134,4 +144,34 @@ form .field input[type="submit"]{
     font-size: 20px;
     background: #74121D;
 
+}
+
+.field button {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 17px;
+  border-radius: 7px;
+  border: 1px solid lightgray;
+  border-bottom-width: 2px;
+  border-color: #74121D;
+  transition: all 0.1s ease;
+}
+
+.login-btn {
+  color: #fff;
+    font-size: 20px;
+    background: #74121D;
+}
+
+.age {
+  background-color: #74121D;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.agetext {
+  color: white;
 }
