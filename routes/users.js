@@ -73,14 +73,6 @@ module.exports = () => {
       res.redirect('/login');
     }
 
-    /*
-    req.cookie.username to grab the name of the user, and sequentially the emails can be grabbed with:
-        getUserEmailByID,
-        getSellerEmailByID
-
-
-    */
-
     const templateVars = {
       user: req.cookies.username,
       userRole: req.cookies.userRole
@@ -99,7 +91,7 @@ module.exports = () => {
     res.render('admin_listing', templateVars);
   });
 
-
+  // load favorites page:
   router.get("/favourites", function(req, res) {
     if (!req.cookies.username) {
       res.cookie('userRole', false);
@@ -111,17 +103,59 @@ module.exports = () => {
     res.render('favorites', templateVars);
   });
 
-  // favorites page favorite button:
-  router.get("/favourites_status", function(req, res) {
-    if (!req.cookies.username) {
-      res.cookie('userRole', false);
-      res.cookie('username', 'Guest');
-    }
+  // Favorite an item from all-wines page:
+  router.post("/api/favorite-item", (req,res) => {
     const templateVars = {
       user: req.cookies.username,
-      userRole: req.cookies.userRole,};
-    res.render('/favorites_status/userid/listing', templateVars);
+      userRole: req.cookies.userRole};
+    console.log("/api/favorite-item clicked");
+    // let query = `INSERT INTO favorites(user_id, listing_id, favorite)
+    // VALUES (6, 10, true);`;
+    res.render("/api/favorite-item clicked", templateVars);
   });
+
+
+  // router.post("/api/favorite-item", function(req, res) {
+  //   if (!req.cookies.username) {
+  //     res.cookie('userRole', false);
+  //     res.cookie('username', 'Guest');
+  //   }
+  //   const templateVars = {
+  //     user: req.cookies.username,
+  //     userRole: req.cookies.userRole};
+  //   res.render('favorites', templateVars);
+  // });
+
+  // module.exports = (db) => {
+  //   router.get("/", (req, res) => {
+  //     let query = `SELECT * FROM widgets`;
+  //     console.log(query);
+  //     db.query(query)
+  //       .then(data => {
+  //         const widgets = data.rows;
+  //         res.json({ widgets });
+  //       })
+  //       .catch(err => {
+  //         res
+  //           .status(500)
+  //           .json({ error: err.message });
+  //       });
+  //   });
+  //   return router;
+  // };
+
+
+  // // remove favorites from favorites page:
+  // router.get("/favourites_status", function(req, res) {
+  //   if (!req.cookies.username) {
+  //     res.cookie('userRole', false);
+  //     res.cookie('username', 'Guest');
+  //   }
+  //   const templateVars = {
+  //     user: req.cookies.username,
+  //     userRole: req.cookies.userRole,};
+  //   res.render('/favorites_status/userid/listing', templateVars);
+  // });
 
   router.get("/create-listing", function(req, res) {
     if (!req.cookies.username) {
