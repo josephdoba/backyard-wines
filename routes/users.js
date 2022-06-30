@@ -48,7 +48,7 @@ module.exports = () => {
             // req.cookies.userRole = user.sellers;
             res.cookie('username', user.name);
             res.cookie('userRole', user.sellers);
-            res.cookie('userID', user.id)
+            res.cookie('userID', user.id);
             res.redirect('/wines');
           }
         }
@@ -91,27 +91,48 @@ module.exports = () => {
   });
 
   // load favorites page:
-  router.get("/favourites", function(req, res) {
+  router.get("/favourites", async(req, res) => {
     if (!req.cookies.username) {
       res.cookie('userRole', false);
       res.cookie('username', 'Guest');
     }
+    const result = await database.loadFavorites(req.cookies.userID);
+    const favoriteExist = await database.checkIfFavoriteExists(req.cookies.userID);
+    console.log(favoriteExist);
     const templateVars = {
       user: req.cookies.username,
-      userRole: req.cookies.userRole,};
+      userRole: req.cookies.userRole,
+      favorites: result,
+      favoriteExist
+    };
     res.render('favorites', templateVars);
+
+
   });
 
   // Favorite an item from all-wines page:
-  router.post("/api/favorite-item", (req,res) => {
+  router.post("/api/favorite-item", async(req,res) => {
+    if (!req.cookies.username) {
+      res.cookie('userRole', false);
+      res.cookie('username', 'Guest');
+      res.redirect('/login');
+    }
+
     const templateVars = {
       user: req.cookies.username,
-      userRole: req.cookies.userRole};
-    console.log("/api/favorite-item clicked");
-    // let query = `INSERT INTO favorites(user_id, listing_id, favorite)
-    // VALUES (6, 10, true);`;
-    res.render("/api/favorite-item clicked", templateVars);
+      userRole: req.cookies.userRole
+    };
+
+    console.log("-----------");
+    console.log(req.body);
+    console.log("-----------");
+
+    const result = await database.addToFavorites(req.body.id);
+
+    // res.redirect("/wines");
   });
+
+
 
 
   // router.post("/api/favorite-item", function(req, res) {
@@ -178,7 +199,7 @@ module.exports = () => {
       userRole: req.cookies.userRole,
       id: req.cookies.userID,
       wineryListings: result
-      };
+    };
     res.render('admin_page', templateVars);
   });
 
@@ -199,7 +220,7 @@ module.exports = () => {
     console.log(req.body);
     const result = await database.removeListing(req.body.id);
     res.redirect('admin/dashboard');
-  })
+  });
 
   return router;
 };

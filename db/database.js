@@ -5,7 +5,7 @@ const db = new Pool(dbParams);
 db.connect();
 
 
-const searchSelector = async (min, max, type, award) => {
+const searchSelector = async(min, max, type, award) => {
   console.log('dbmin', min);
   console.log('dbmax', max);
   console.log('award', award);
@@ -71,14 +71,14 @@ const searchSelector = async (min, max, type, award) => {
 
 
 
-const getUsers = async (userID) => {
+const getUsers = async(userID) => {
   const result = await db.query(`SELECT * FROM users
   WHERE id = $1`, [userID]);
   return result.rows;
 };
 
 
-const getUserByEmail = async (email) => {
+const getUserByEmail = async(email) => {
   const result = await db.query(`SELECT * FROM users
   WHERE email = $1`, [email]);
   // console.log('RESULT IS', result);
@@ -103,13 +103,39 @@ const getSellerEmailByID = async() => {
 };
 
 const setToSoldout = async(id) => {
-  const result = await db.query(`UPDATE wine_listings SET sold_out = true WHERE id=$1`, [id])
+  const result = await db.query(`UPDATE wine_listings SET sold_out = true WHERE id=$1`, [id]);
 };
 
 const removeListing = async(id) => {
   const result = await db.query(`DELETE FROM wine_listings WHERE id=$1`, [id]);
 };
 
+const addToFavorites = async(listingId) => {
+  const result = await db.query(`
+    INSERT INTO favorites(user_id, listing_id, favorite)
+    VALUES (6, $1, true);`, [listingId]);
+  return result;
+};
+
+const loadFavorites = async(id) => {
+  const result = await db.query(`
+    SELECT wine_listings.* FROM wine_listings
+    JOIN favorites ON favorites.listing_id = wine_listings.id
+    WHERE favorites.user_id = $1;
+  `, [id]);
+
+  return result.rows;
+};
+
+const checkIfFavoriteExists = async(id) => {
+  const result = await db.query(`
+    SELECT wine_listings.id FROM wine_listings
+    JOIN favorites ON favorites.listing_id = wine_listings.id
+    WHERE favorites.user_id = $1;
+ `, [id]);
+
+  return result.rows;
+};
 
 module.exports = {
   searchSelector,
@@ -119,6 +145,9 @@ module.exports = {
   getUserEmailByID,
   getSellerEmailByID,
   setToSoldout,
-  removeListing
+  removeListing,
+  addToFavorites,
+  loadFavorites,
+  checkIfFavoriteExists
 
 };
