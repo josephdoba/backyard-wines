@@ -24,7 +24,7 @@
 <body class="main">
 <header>
   <%- include('partials/_navbar') %>
-  <h1>Welcome <%= wineryListings.winery %> to your admin dashboard</h1>
+  <h1> <%= wineryListings.winery %> Admin Dashboard</h1>
 </header>
 <% wineryListings.forEach((wine) => { %>
   <form method="POST" action="/soldout" class="wine-form" data-id="<%= wine.id %>">
@@ -37,13 +37,13 @@
       <span class="award"><%= wine.award %></span>
       <span class="desc"><%= wine.wine_name %></span>
       <% if (wine.sold_out) { %>
-      <button class="alreadysoldout">already soldout</button>
+      <button class="alreadysoldout">Already Soldout</button>
       <% } else { %>
-        <button class="soldout">Mark as soldout</button>
+        <button class="soldout">Mark as Soldout</button>
         <% } %>
       </form>
         <form method="POST" action="/removelisting" class="delete-form" data-id="<%= wine.id %>">
-          <button class="delete">Delete listing</button>
+          <button class="delete">Delete Listing</button>
         </form>
       <i class="fa-solid fa-heart"></i>
       <article class="actual-desc">
