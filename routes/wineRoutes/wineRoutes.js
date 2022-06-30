@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const { searchSelector } = require('../../db/database');
+const { searchSelector, addWineListing } = require('../../db/database');
 
 module.exports = () => {
   router.get("/wines", async(req, res) => {
@@ -57,6 +57,8 @@ module.exports = () => {
     };
     res.render('white-wines', templateVars);
   });
+
+
   //Test db connection
   // router.get("/test", async (req, res) => {
   //   const result = await getAllWines();

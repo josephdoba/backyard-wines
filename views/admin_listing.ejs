@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>White wines</title>
+  <title>Create New Listings</title>
 </head>
 <body class="main">
 <header>
@@ -18,7 +18,7 @@
 </header>
 <body>
     <!-- user_id, price, year, wine_name, winery, award, wine_type, description, sold_out, image_url -->
-    <form action="listing" method="post" id="new-wine-form" class="new-wine-form">
+    <form action="/admin/dashboard" method="post" id="new-wine-form" enctype='multipart/form-data' class="new-wine-form">
     <div class="wrapper">
         <div class="form">
            <div class="title">
@@ -26,43 +26,58 @@
            </div>
            <div class="inputfield">
               <label>Wine Name</label>
-              <input type="text" class="input">
+              <input type="text" class="input" name="wine_name">
            </div>
 
            <div class="inputfield">
             <label>Year</label>
-            <input type="text" class="input">
+            <input type="text" class="input" name="year" placeholder="2018">
            </div>
 
            <div class="inputfield">
               <label>Winery</label>
-              <input type="text" class="input">
+              <input type="text" class="input" name ="winery">
            </div>
 
            <div class="inputfield">
               <label>Award</label>
-              <input type="text" class="input">
+              <select class="form-select form-select-sm" name="award" aria-label=".form-select-sm example" class="form-control">
+              <option selected>Select the Award</option>
+              <option value="1">NWAC21 Platinum</option>
+              <option value="2">NWAC21 Gold</option>
+              <option value="3">NWAC21 Silver</option>
+              <option value="4">No Awards Yet</option>
+              </select>
            </div>
 
            <div class="inputfield">
-              <label>Wine Type</label>
-              <input type="text" class="input">
-           </div>
+            <label>Wine Type</label>
+            <select class="form-select form-select-sm" name="wine_type" aria-label=".form-select-sm example" class="form-control">
+              <option selected>Select the Award</option>
+              <option value="1">Reds</option>
+              <option value="2">Whites</option>
+              </select>
+         </div>
 
            <div class="inputfield">
              <label>Price</label>
-             <input type="text" class="input">
+             <input type="text" class="input" name="price" placeholder="40">
            </div>
 
            <div class="inputfield">
-              <label>description</label>
-              <textarea class="textarea"></textarea>
+              <label>Description</label>
+              <textarea class="textarea" name="description"></textarea>
            </div>
 
            <div class="inputfield">
               <label>image_url</label>
-              <input type="text" class="input">
+              <input type="file" class="input" name="wine_image_url">
            </div>
+
+           <div class="inputfield">
+            <label>winery_image_url</label>
+            <input type="file" class="input" name="winery_image_url" >
+         </div>
 
            <div class="inputfield">
             <input type="submit" value="Create" class="btn">
