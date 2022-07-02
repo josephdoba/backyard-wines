@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
   <script src="https://kit.fontawesome.com/f6eb3ac13e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/styles/all-wines.css" type="text/css" />
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
@@ -33,7 +35,10 @@
   <span class="label">Label: <%= wine.wine_type %> </span>
   <span class="award"><%= wine.award %></span>
   <span class="desc"><%= wine.wine_name %></span>
-  <i class="fa-solid fa-heart"></i>
+  <form class="add-to-favorites-btn" method="POST" action="/api/favorite-item" data-id="<%= wine.id %>">
+
+    <button type="submit" class="add-to-favorites-btn"><i class="fa-solid fa-heart"></i></button>
+  </form>
   <form method="GET" action="/contact-page">
     <button type="submit" class="contact">Contact</button>
   </form>
